@@ -1,7 +1,6 @@
 # Unity Care Clinic – PHP 8 OOP CLI
 
 A robust console application for managing clinic data (patients, doctors, departments) using **PHP 8 Object-Oriented Programming** and **MySQL**, developed as an internal tool for the Unity Care Clinic team.
-
 ## 📋 Overview
 
 Unity Care Clinic CLI is a refactored Object-Oriented version of the existing procedural web application. It provides a clean, maintainable command-line interface for rapid internal data management without requiring web browser access.
