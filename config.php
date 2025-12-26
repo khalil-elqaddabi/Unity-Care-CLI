@@ -1,17 +1,25 @@
 <?php
-$host = 'localhost';
-$dbname = 'backend v1 unity care clinic';
-$username = 'root';
-$password = '';
-$charset = 'utf8mb4';
+class DAtabase {
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $username, $password);
-    $conn-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    private $host = '??????????';
+    private $dbname = '??????????';
+    private $username = '??????????
+';
+    private $password = '??????????
+';
+    private $charset = 'utf8mb4';
+    private $conn;
+    
+    function connect() {
 
-}catch(PDOException $e) {
-    die("connection failed ... " . $e->getMessage());
-
+        try {
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=$this->charset", $this->username, $this->password);
+            $this->conn-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+        }catch(PDOException $e) {
+            die("connection failed ... " . $e->getMessage());
+        }
+        
+    }
+    
 }
-
-?>
