@@ -1,6 +1,5 @@
 <?php
-// require_once "coonfig.php";
-require_once "patient.php";
+require_once "cpatient.php";
 
 class PatientMenu {
     private $patient;
@@ -14,13 +13,12 @@ class PatientMenu {
     public function showMenu() {
         while (true) {
             echo "\n=== UNITY CARE CLI ===\n";
-            echo "1. Chuf kull patients\n";
-            echo "2. Zid patient jdida\n";
-            echo "3. Baddel patient\n";
-            echo "4. Chuf patient wa7ed\n";
+            echo "1. toute patients\n";
+            echo "2. ajouter patient \n";
+            echo "3. modifie patient\n";
             echo "5. Supprime patient\n";
-            echo "0. Khruj\n";
-            echo "Chno bghiti? (0-5): ";
+            echo "0. quiter\n";
+            echo "choix: ";
             
             $choice = trim(fgets(STDIN));
             
@@ -30,18 +28,18 @@ class PatientMenu {
                 case '3': $this->editPatient(); break;
                 case '4': $this->viewPatient(); break;
                 case '5': $this->deletePatient(); break;
-                case '0': echo "Bye! 👋\n"; exit(0);
-                default: echo "Choisis 0-5 ghadi! 😅\n";
+                case '0': echo "Bye!"; exit(0);
+                default: echo "aucune";
             }
         }
     }
     
     private function allPatients() {
-        echo "\n=== KULL LES PATIENTS ===\n";
+        echo "\n===LES PATIENTS ===\n";
         $patients = $this->patient->getAll();
         
         if (empty($patients)) {
-            echo "Makaynch patients! Zid wa7da! 😊\n";
+            echo "Pas de patient\n";
             return;
         }
         
@@ -52,40 +50,36 @@ class PatientMenu {
     
     private function addPatient() {
         echo "\n=== ZID PATIENT JDIDA ===\n";
-        echo "Semya (first_name): "; $first = trim(fgets(STDIN));
-        echo "Jem3 (last_name): "; $last = trim(fgets(STDIN));
+        echo "first name: "; $first = trim(fgets(STDIN));
+        echo "last name: "; $last = trim(fgets(STDIN));
         echo "Tel: "; $phone = trim(fgets(STDIN));
         echo "Email: "; $email = trim(fgets(STDIN));
         
-        // Ajoute f DB (khass t3awd create method)
-        echo "Patient '$first $last' zadd! ✅\n";
+       
+        echo "Patient '$first $last'";
     }
     
     private function editPatient() {
-        echo "\n=== BADDEL PATIENT ===\n";
+        echo "\n=== edit PATIENT ===\n";
         $this->allPatients();
-        echo "ID dyal patient: "; $id = trim(fgets(STDIN));
-        echo "Chno bghiti tbadl? (first_name/last_name/phone/email): ";
+        echo "ID  patient: "; $id = trim(fgets(STDIN));
+        echo "first_name/last_name/phone/email: ";
         $field = trim(fgets(STDIN));
-        echo "Chno jdida? "; $value = trim(fgets(STDIN));
-        echo "Patient ID $id - $field = $value ✅\n";
+        echo "new "; $value = trim(fgets(STDIN));
+        echo "Patient ID $id - $field = $value ";
     }
     
-    private function viewPatient() {
-        echo "\n=== CHUF PATIENT ===\n";
-        echo "ID: "; $id = trim(fgets(STDIN));
-        echo "Patient ID $id mzyan! 🔍\n";
-    }
+   
     
     private function deletePatient() {
         echo "\n=== SUPPRIME PATIENT ===\n";
         $this->allPatients();
-        echo "ID dyal patient: "; $id = trim(fgets(STDIN));
-        echo "Patient ID $id mchiy! 🗑️\n";
+        echo "ID patient: "; $id = trim(fgets(STDIN));
+        echo "Patient ID $id delete\n";
     }
 }
 
-// LANCE LE MENU!
+
 $menu = new PatientMenu();
 $menu->showMenu();
 ?>
